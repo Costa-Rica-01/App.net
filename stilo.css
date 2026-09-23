@@ -1,0 +1,706 @@
+/* =========================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+========================================================= */
+
+:root {
+    --blue-dark: #687b8e;
+    --blue-medium: #91a4b7;
+    --blue-light: #c7d2de;
+
+    --border: #b7bec6;
+    --gray-light: #eeeeee;
+    --gray-medium: #d5d5d5;
+    --text: #333333;
+    --text-light: #777777;
+
+    --google-blue: #4285f4;
+    --google-red: #db4437;
+    --google-yellow: #f4b400;
+    --google-green: #0f9d58;
+
+    --search-border: #cbd4e7;
+
+    --shadow-small:
+        0 1px 3px rgba(0, 0, 0, 0.15);
+
+    --shadow-medium:
+        0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   2. RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--text);
+    background: #ffffff;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   3. ESTRUCTURA PRINCIPAL
+========================================================= */
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   4. CABECERA SUPERIOR
+========================================================= */
+
+.browser-header {
+    background:
+        linear-gradient(
+            to bottom,
+            var(--blue-light) 0%,
+            #afbdcc 45%,
+            var(--blue-medium) 100%
+        );
+
+    border-top: 4px solid #727d89;
+    border-bottom: 3px solid #667381;
+
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, 0.7);
+}
+
+
+/* Título superior */
+
+.browser-title {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #3d4650;
+
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+
+    text-shadow:
+        0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================================
+   5. BARRA DEL NAVEGADOR
+========================================================= */
+
+.browser-controls {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        0 22px
+        25px;
+}
+
+
+/* Barra de dirección */
+
+.address-bar {
+    flex: 1;
+    min-width: 0;
+
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        0 25px;
+
+    background: #ffffff;
+
+    border: 2px solid var(--border);
+    border-radius: 24px;
+
+    box-shadow:
+        inset 0 1px 4px rgba(0, 0, 0, 0.12),
+        var(--shadow-small);
+
+    color: #444444;
+
+    font-size: clamp(18px, 3vw, 32px);
+}
+
+.address-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* Botón recargar */
+
+.reload-button {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--blue-dark);
+
+    font-size: 42px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+.reload-button:hover {
+    transform: rotate(25deg);
+    color: #405567;
+}
+
+
+/* =========================================================
+   6. CAJA YAHOO
+========================================================= */
+
+.yahoo-box {
+    flex: 0 0 300px;
+
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 35px;
+
+    background: #ffffff;
+
+    border: 2px solid var(--border);
+    border-radius: 45px;
+
+    box-shadow:
+        inset 0 1px 4px rgba(0, 0, 0, 0.10),
+        var(--shadow-small);
+
+    color: #aaaaaa;
+
+    font-size: clamp(20px, 3vw, 32px);
+}
+
+
+/* =========================================================
+   7. NAVEGACIÓN
+========================================================= */
+
+.main-navigation {
+    background:
+        linear-gradient(
+            to bottom,
+            #fafafa,
+            #dedede
+        );
+
+    border-bottom: 3px solid #aaaaaa;
+}
+
+.navigation-list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.navigation-item {
+    flex: 0 0 auto;
+}
+
+.navigation-link {
+    min-height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        0 30px;
+
+    border-right: 1px solid #d0d0d0;
+
+    color: #333333;
+
+    text-decoration: none;
+
+    font-size: clamp(17px, 2.5vw, 29px);
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.navigation-link:hover {
+    background: #eeeeee;
+}
+
+.navigation-link.active {
+    position: relative;
+
+    background: #ffffff;
+
+    border:
+        2px solid #aaaaaa;
+
+    border-bottom: none;
+
+    border-radius:
+        34px 34px 0 0;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   8. CONTENIDO PRINCIPAL
+========================================================= */
+
+main {
+    flex: 1;
+}
+
+.search-page {
+    width: min(1100px, 94%);
+
+    margin:
+        0 auto;
+
+    padding:
+        60px 0
+        80px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   9. DOODLE
+========================================================= */
+
+.doodle {
+    min-height: 170px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        0 auto
+        45px;
+
+    user-select: none;
+}
+
+.google-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(65px, 10vw, 105px);
+    font-weight: 700;
+
+    letter-spacing: -12px;
+
+    line-height: 1;
+}
+
+.letter-blue {
+    color: var(--google-blue);
+}
+
+.letter-red {
+    color: var(--google-red);
+}
+
+.letter-yellow {
+    color: var(--google-yellow);
+}
+
+.letter-green {
+    color: var(--google-green);
+}
+
+
+/* =========================================================
+   10. SELLO DEL DOODLE
+========================================================= */
+
+.stamp {
+    width: 120px;
+    height: 145px;
+
+    margin:
+        0 -2px;
+
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: rotate(5deg);
+
+    background:
+        linear-gradient(
+            135deg,
+            #e6b84c,
+            #fff0a3 45%,
+            #d19a36
+        );
+
+    border:
+        4px solid #aa7d2d;
+
+    box-shadow:
+        2px 3px 5px rgba(0, 0, 0, 0.18);
+}
+
+.stamp::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 6px;
+
+    border:
+        2px dashed rgba(115, 75, 15, 0.55);
+}
+
+.stamp-content {
+    position: relative;
+    z-index: 1;
+
+    transform: rotate(-5deg);
+
+    color: #624719;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   11. BUSCADOR
+========================================================= */
+
+.search-form {
+    width: 100%;
+
+    display: flex;
+    align-items: stretch;
+
+    min-height: 105px;
+
+    background: #ffffff;
+
+    border:
+        4px solid var(--search-border);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 2px 7px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Campo */
+
+.search-input {
+    flex: 1;
+    min-width: 0;
+
+    padding:
+        0 28px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #333333;
+
+    font-size: clamp(20px, 3vw, 32px);
+}
+
+.search-input::placeholder {
+    color: #aaaaaa;
+}
+
+.search-input:focus {
+    background:
+        rgba(66, 133, 244, 0.025);
+}
+
+
+/* Botón */
+
+.search-button {
+    width: 115px;
+
+    border: none;
+    border-left:
+        2px solid var(--search-border);
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fafbff,
+            #e8ecf8
+        );
+
+    color: #314d7c;
+
+    font-size: 42px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.search-button:hover {
+    background: #e0e6f5;
+    color: #1d3765;
+}
+
+.search-button:active {
+    background: #d3daed;
+}
+
+
+/* =========================================================
+   12. TEXTO DE IDIOMA
+========================================================= */
+
+.language {
+    margin-top: 330px;
+
+    color: #222222;
+
+    font-size: clamp(17px, 2.5vw, 25px);
+}
+
+.language-link {
+    margin-left: 20px;
+
+    color: #557ec0;
+
+    text-decoration: none;
+}
+
+.language-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   13. PIE DE PÁGINA
+========================================================= */
+
+.footer {
+    padding:
+        18px;
+
+    text-align: center;
+
+    color: #888888;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   14. TABLETS
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .browser-controls {
+        gap: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .yahoo-box {
+        flex-basis: 210px;
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .navigation-link {
+        padding:
+            0 18px;
+    }
+
+    .google-logo {
+        letter-spacing: -8px;
+    }
+
+    .language {
+        margin-top: 250px;
+    }
+}
+
+
+/* =========================================================
+   15. MÓVILES
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .browser-title {
+        min-height: 52px;
+    }
+
+    .browser-controls {
+        padding-bottom: 15px;
+    }
+
+    .address-bar {
+        min-height: 55px;
+        padding: 0 15px;
+
+        border-radius: 20px;
+    }
+
+    .reload-button {
+        width: 38px;
+        height: 38px;
+
+        font-size: 28px;
+    }
+
+    .yahoo-box {
+        flex-basis: 105px;
+        min-height: 55px;
+
+        padding: 0 15px;
+
+        border-radius: 32px;
+    }
+
+    .main-navigation {
+        overflow-x: auto;
+    }
+
+    .navigation-list {
+        width: max-content;
+    }
+
+    .navigation-link {
+        min-height: 55px;
+        padding: 0 14px;
+    }
+
+    .search-page {
+        padding-top: 30px;
+    }
+
+    .doodle {
+        min-height: 110px;
+        margin-bottom: 35px;
+    }
+
+    .google-logo {
+        letter-spacing: -5px;
+    }
+
+    .stamp {
+        width: 70px;
+        height: 90px;
+    }
+
+    .stamp-content {
+        font-size: 7px;
+    }
+
+    .search-form {
+        min-height: 70px;
+        border-width: 3px;
+    }
+
+    .search-input {
+        padding: 0 15px;
+    }
+
+    .search-button {
+        width: 70px;
+        font-size: 28px;
+    }
+
+    .language {
+        margin-top: 170px;
+    }
+
+    .footer {
+        padding-bottom: 15px;
+    }
+}

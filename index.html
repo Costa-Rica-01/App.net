@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Página de búsqueda inspirada en el Google clásico"
+    >
+
+    <title>APP.NET - Buscador</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page">
+
+
+        <!-- =====================================================
+             CABECERA
+        ====================================================== -->
+
+        <header class="browser-header">
+
+            <div class="browser-title">
+                APP.NET
+            </div>
+
+
+            <div class="browser-controls">
+
+                <!-- Barra de dirección -->
+
+                <div
+                    class="address-bar"
+                    aria-label="Dirección web"
+                >
+                    <span class="address-text">
+                        www.google.co.cr/
+                    </span>
+
+                    <button
+                        class="reload-button"
+                        type="button"
+                        aria-label="Recargar página"
+                        onclick="location.reload()"
+                    >
+                        ↻
+                    </button>
+                </div>
+
+
+                <!-- Caja decorativa Yahoo -->
+
+                <div
+                    class="yahoo-box"
+                    aria-label="Yahoo"
+                >
+                    Yahoo!
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             NAVEGACIÓN
+        ====================================================== -->
+
+        <nav
+            class="main-navigation"
+            aria-label="Navegación principal"
+        >
+
+            <ul class="navigation-list">
+
+                <li class="navigation-item">
+                    <a
+                        href="#"
+                        class="navigation-link active"
+                        aria-current="page"
+                    >
+                        Web
+                    </a>
+                </li>
+
+                <li class="navigation-item">
+                    <a
+                        href="#"
+                        class="navigation-link"
+                    >
+                        Imágenes
+                    </a>
+                </li>
+
+                <li class="navigation-item">
+                    <a
+                        href="#"
+                        class="navigation-link"
+                    >
+                        Places
+                    </a>
+                </li>
+
+                <li class="navigation-item">
+                    <a
+                        href="#"
+                        class="navigation-link"
+                    >
+                        Apps
+                    </a>
+                </li>
+
+                <li class="navigation-item">
+                    <a
+                        href="#"
+                        class="navigation-link"
+                    >
+                        más
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <!-- =====================================================
+             CONTENIDO PRINCIPAL
+        ====================================================== -->
+
+        <main>
+
+            <section
+                class="search-page"
+                aria-label="Buscador"
+            >
+
+
+                <!-- =================================================
+                     DOODLE
+                ================================================== -->
+
+                <div
+                    class="doodle"
+                    aria-label="Google"
+                >
+
+                    <div class="google-logo">
+
+                        <span class="letter-blue">
+                           A
+                        </span>
+
+                        <span class="letter-red">
+                           P
+                        </span>
+
+
+                        <!-- Sello -->
+
+                        <div class="stamp">
+
+                            <div class="stamp-content">
+
+                                CORREOS DE<br>
+                                COSTA RICA<br>
+                                <br>
+                                SUCURSAL<br>
+                                LIMÓN
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="letter-yellow">
+                            P.
+                        </span>
+
+                        <span class="letter-blue">
+                           N
+                        </span>
+
+                        <span class="letter-green">
+                            E
+                        </span>
+
+                        <span class="letter-red">
+                          T
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     FORMULARIO DE BÚSQUEDA
+                ================================================== -->
+
+                <form
+                    class="search-form"
+                    action="https://www.google.com/search"
+                    method="GET"
+                    target="_blank"
+                >
+
+                    <label
+                        for="search"
+                        hidden
+                    >
+                        Buscar en Google
+                    </label>
+
+                    <input
+                        id="search"
+                        class="search-input"
+                        type="search"
+                        name="q"
+                        placeholder="Buscar en la web"
+                        autocomplete="off"
+                        autofocus
+                        required
+                    >
+
+                    <button
+                        class="search-button"
+                        type="submit"
+                        aria-label="Buscar"
+                        title="Buscar"
+                    >
+                        🔍
+                    </button>
+
+                </form>
+
+
+                <!-- =================================================
+                     IDIOMA
+                ================================================== -->
+
+                <div class="language">
+
+                    <span>
+                        Google.co.cr ofrecido en:
+                    </span>
+
+                    <a
+                        class="language-link"
+                        href="https://consultascivicil.blogspot.com/2026/04/traductor-ingles-espanol-body-font.html?m=1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        English
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =====================================================
+             PIE DE PÁGINA
+        ====================================================== -->
+
+        <footer class="footer">
+            Página de búsqueda inspirada en Google clásico
+        </footer>
+
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+        /*
+         * Evita que los enlaces decorativos de navegación
+         * salten al principio de la página.
+         */
+
+        const navigationLinks =
+            document.querySelectorAll(".navigation-link");
+
+        navigationLinks.forEach(link => {
+
+            link.addEventListener("click", event => {
+                event.preventDefault();
+
+                navigationLinks.forEach(item => {
+                    item.classList.remove("active");
+                    item.removeAttribute("aria-current");
+                });
+
+                link.classList.add("active");
+                link.setAttribute("aria-current", "page");
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
